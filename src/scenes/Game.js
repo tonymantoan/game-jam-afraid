@@ -81,7 +81,7 @@ export default class extends Phaser.Scene {
       this.physics.shutdown();
 
       var msgPoint = this.cameras.main.getWorldPoint( 150, 150 );
-      this.add.text(msgPoint.x, msgPoint.y, 'You were spotted :( \nPress Any Key\n To Restart', {
+      this.add.text(msgPoint.x, msgPoint.y, 'You were spotted :( \nPress Key, or Tap\n To Restart', {
         font: '64px',
         fill: '#7744ff'
       });
@@ -115,6 +115,7 @@ export default class extends Phaser.Scene {
 
   endGame(){
       this.input.keyboard.once('keyup', this.restart ); 
+      this.input.once( 'pointerup', this.restart );
   }
 
   resetTileAlpha(){

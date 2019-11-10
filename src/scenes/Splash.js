@@ -16,7 +16,7 @@ export default class extends Phaser.Scene {
 You're only comfort is that all the other students are very nearsighted.
 
 
-Press any key to being
+Press any key or tap to begin
 
 
 Game developed by Tony Mantoan
@@ -27,10 +27,18 @@ Game Assets created by Steve Aversa`;
       wordWrap: { width: wrapWidth, useAdvancedWrap: true }
     });
 
-    this.input.keyboard.on('keyup', (eventName, event) => { 
-      this.scene.start('GameScene', {tileMapName: "school2.json", tileSetName: "school2.png"} )
-      this.scene.start( 'UIScene' )
+    this.input.on( 'pointerup', ( pointer ) => {
+      this.startGame();
     });
+
+    this.input.keyboard.on('keyup', (eventName, event) => { 
+      this.startGame();
+    });
+  }
+
+  startGame(){
+    this.scene.start('GameScene', {tileMapName: "school2.json", tileSetName: "school2.png"} )
+    this.scene.start( 'UIScene' )
   }
 
   update () {}
